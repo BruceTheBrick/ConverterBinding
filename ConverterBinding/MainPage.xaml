@@ -3,21 +3,8 @@
     x:Class="ConverterBinding.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converterBinding="using:ConverterBinding"
     xmlns:converters="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Name="This">
-
-    <!--  This StackLayout will not throw an exception  -->
-    <!--  <StackLayout  -->
-    <!--  AutomationProperties.IsInAccessibleTree="{Binding IsInAccessibleTree, Source={x:Reference This}}"  -->
-    <!--  HorizontalOptions="Center"  -->
-    <!--  VerticalOptions="Center">  -->
-
-    <!--  This StackLayout WILL throw an exception  -->
-    <StackLayout
-        AutomationProperties.IsInAccessibleTree="{Binding AccessibilityName, Converter={converters:IsStringNotNullOrEmptyConverter}, Source={x:Reference This}}"
-        HorizontalOptions="Center"
-        VerticalOptions="Center">
-        <Image Source="dotnet_bot" WidthRequest="80" />
-        <Label Text="Hello, I'm the DotNet Bot!" />
-    </StackLayout>
+    <converterBinding:MainPageControl Bool="{Binding TextValue, Converter={converters:IsStringNotNullOrEmptyConverter}, Source={x:Reference This}}" />
 </ContentPage>
